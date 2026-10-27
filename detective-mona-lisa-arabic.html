@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Who Stole the Mona Lisa? Phrasal verb detective game (Arabic)</title>
+<style>
+:root{--bg:#f6f4ee;--card:#fff;--ink:#1d2433;--mute:#5d667a;--line:#e0dbcd;--acc:#c2410c;--ok:#2b8a3e;--bad:#c92a2a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b202b;--ink:#eceff6;--mute:#9aa3b8;--line:#2d3445;--acc:#ff9a5c;--ok:#6fcf86;--bad:#ff8787;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151d;--card:#1b202b;--ink:#eceff6;--mute:#9aa3b8;--line:#2d3445;--acc:#ff9a5c;--ok:#6fcf86;--bad:#ff8787;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Georgia,"Times New Roman",serif}
+.w{max-width:640px;margin:0 auto;padding:18px 14px 40px}
+h1{font:700 24px/1.2 system-ui,sans-serif;margin:0 0 2px}.sub{font:14px system-ui,sans-serif;color:var(--mute);margin:0 0 14px}
+.bar{display:flex;justify-content:space-between;font:14px system-ui,sans-serif;color:var(--mute);margin-bottom:8px}.hr{color:var(--bad);letter-spacing:2px;font-size:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.st{margin:0 0 12px}.pr{margin:0;font-weight:700;font-size:19px}
+.gap{border-bottom:3px solid var(--acc);color:var(--acc);padding:0 4px}
+.hint{font:14px system-ui,sans-serif;color:var(--mute);margin-top:12px}
+.opts{display:grid;gap:8px;margin-top:12px}
+button{font:600 16px system-ui,sans-serif;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:12px;cursor:pointer;text-align:left}
+.opt.good{background:var(--ok);border-color:var(--ok);color:#fff}.opt.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.row{display:flex;gap:8px;margin-top:10px}.row button{flex:1;font-size:14px;text-align:center}
+.fb{margin-top:12px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+.fb.g{border-color:var(--ok)}.fb.r{border-color:var(--bad)}.fb b{font-family:system-ui,sans-serif}
+.fact{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font:15px/1.5 system-ui,sans-serif;color:var(--mute)}
+.pri{background:var(--acc);border-color:var(--acc);color:#fff;margin-top:10px;width:100%;text-align:center}
+.rv{font:15px/1.5 system-ui,sans-serif;margin:6px 0}.rk{font-size:22px;font-weight:700;margin:6px 0}
+h2{font:700 17px system-ui,sans-serif;margin:16px 0 4px}
+</style></head><body><div class="w">
+<h1>Who Stole the Mona Lisa?</h1><p class="sub">Case no. 1 · a true story from 1911. Choose the right phrasal verbs and solve the mystery.</p>
+<div id="app"></div></div>
+<script>
+const S=[
+{t:"You are a Paris detective. It is Tuesday, 22 August 1911. The painter Louis Béroud comes to the Louvre to work, but the wall where the Mona Lisa hangs is empty. A guard says: “It’s with the photographers.” It isn’t.",g:"You order the guards: “___ the painting in every room!”",o:["Look for","Look out","Look up to"],c:0,ok:"Every room, every corridor. Nothing. The Mona Lisa is really gone.",no:"You send the guards the wrong way and lose an hour.",fact:"اللوفر مغلق أيام الاثنين، لذلك وقعت السرقة في 21 أغسطس، ولم يلاحظ أحد اختفاء اللوحة إلا بعد نحو يوم.",ru:"أنت محقق في باريس. صباح الثلاثاء 22 أغسطس 1911. جاء الرسام لويس بيرو إلى اللوفر ليعمل، لكن الجدار الذي تُعلَّق عليه الموناليزا فارغ. ظنّ الحارس أن اللوحة عند المصوّرين، لكنها ليست هناك. look for = يبحث عن."},
+{t:"A guard finds the empty frame and glass in a service staircase. The thief took only the painting. It is small, and it is painted on a wooden panel.",g:"Nobody saw him ___ the building with it.",o:["get out of","give up","turn down"],c:0,ok:"The painting is easy to hide under a coat. He simply walked out.",no:"You look for a trick with ropes and windows. The truth is much simpler.",fact:"الموناليزا لوحة صغيرة، نحو 77 × 53 سنتيمتراً، مرسومة على لوح من خشب الحور.",ru:"وجد أحد الحرّاس الإطار الفارغ والزجاج في درج الخدمة. أخذ اللص اللوحة فقط، وهي صغيرة. لم يرَه أحد وهو يخرج من المبنى بها. get out of = يخرج من."},
+{t:"The Louvre closes for a week. On Monday, many workers were inside in white smocks, so a man in a smock looked completely normal.",g:"You need to ___ who was in the building that morning.",o:["find out","run out","break out"],c:0,ok:"The list is long: workers, guards, cleaners. Someone on it knows the building very well.",no:"You guess instead of checking the staff lists, and the list grows longer.",fact:"بعد السرقة فقد مسؤول المتحف منصبه، وجعلت الصحف حول العالم اللوحة مشهورة.",ru:"أُغلق اللوفر أسبوعاً. كان في المبنى يوم الاثنين عمّال كثيرون يرتدون أردية بيضاء، لذلك بدا الرجل ذو الرداء عادياً. عليك أن تعرف مَن كان في المبنى. find out = يكتشف، يعرف."},
+{t:"A new lead: Géry Pieret, a Belgian adventurer, had stolen small statues from the Louvre before and sold them to the painter Pablo Picasso. The poet Guillaume Apollinaire, Pieret’s friend, is arrested. Picasso is questioned too.",g:"After hard questions, you ___ both men as suspects.",o:["rule out","set up","pull off"],c:0,ok:"Neither man took the painting. Both are released.",no:"You keep chasing the wrong men while the real thief stays calm and free.",fact:"قضى أبولينير بضعة أيام في السجن. وتقول بعض الروايات إن بيكاسو خاف كثيراً حتى بكى أثناء الاستجواب.",ru:"خيط جديد: جيري بييريه، مغامر بلجيكي، سرق تماثيل صغيرة من اللوفر وباعها للرسام بابلو بيكاسو. اعتُقل صديقه الشاعر غيوم أبولينير واستُجوب بيكاسو أيضاً. بعد الاستجواب تستبعد الرجلين من قائمة المشتبه بهم. rule out = يستبعد."},
+{t:"Months pass, then years. People come to the Louvre just to look at the empty space on the wall. The police have no new clues. Your chief says: “Close the file.”",g:"But you refuse to ___.",o:["give up","give out","give away"],c:0,ok:"You keep one small note on your desk: “Someone will try to sell it.”",no:"You close the file. The case sleeps, but luckily it wakes up on its own.",fact:"تدفقت الجماهير فعلاً لمشاهدة الجدار الفارغ. وجعلت السرقة الموناليزا أشهر من أي وقت مضى.",ru:"تمر الأشهر ثم السنوات. يأتي الناس إلى اللوفر ليروا المكان الفارغ على الجدار. يطلب رئيسك إغلاق الملف، لكنك ترفض الاستسلام. give up = يستسلم، يتخلى."},
+{t:"November 1913. A letter arrives for Alfredo Geri, an art dealer in Florence. The sender signs it “Leonardo” and offers to sell the Mona Lisa. Geri speaks to the director of the Uffizi Gallery.",g:"Together they decide to ___ a meeting with the seller.",o:["set up","set off","set out"],c:0,ok:"The seller agrees to come to Florence with the painting.",no:"The plan sounds confusing and the seller gets nervous, but he still agrees.",fact:"كانت الرسالة موقّعة باسم «ليوناردو»، وطلب البائع مبلغاً كبيراً.",ru:"نوفمبر 1913. تصل رسالة إلى ألفريدو جيري، تاجر فنون في فلورنسا، موقّعة باسم «ليوناردو»، يعرض فيها بيع الموناليزا. يقرر مع مدير معرض أوفيتسي ترتيب لقاء مع البائع. set up = يرتّب، ينظّم."},
+{t:"In a small hotel room in Florence, a man opens a wooden trunk. Under old clothes and tools lies the Mona Lisa. Geri studies it carefully.",g:"He and the Uffizi director quickly ___ that this is the real painting.",o:["figure out","pass out","wear off"],c:0,ok:"It is real. They stay calm and say they need time to bring the money.",no:"Doubt makes them slow, but in the end they recognize it.",fact:"أخفى اللص اللوحة في غرفته في باريس أكثر من عامين.",ru:"في غرفة فندق صغيرة في فلورنسا يفتح رجل صندوقاً خشبياً. تحت الملابس القديمة والأدوات ترقد الموناليزا. يدرك الرجلان بسرعة أن اللوحة أصلية. figure out = يدرك، يفهم."},
+{t:"Geri leaves the room calmly. He doesn’t want the seller to run.",g:"Outside, he quietly ___ the police.",o:["tips off","kicks out","rips off"],c:0,ok:"Officers arrive. The man is arrested: his name is Vincenzo Peruggia, an Italian who once worked at the Louvre.",no:"A small delay! But the police still find the man at his hotel.",fact:"كان فينتشنزو بيروجيا قد عمل في اللوفر ويعرف المبنى جيداً.",ru:"يخرج جيري من الغرفة بهدوء، فهو لا يريد أن يهرب البائع. في الخارج يبلّغ الشرطة سراً. tip off = يبلّغ سراً، ينبّه."},
+{t:"In court, Vincenzo Peruggia says he did it for his country: he believed the Mona Lisa belonged in Italy. Many Italians supported him. The painting is shown in Italy, and then it is time to send it home.",g:"The Mona Lisa will ___ to the Louvre.",o:["go back","back off","go on"],c:0,ok:"In early 1914, the painting hangs in the Louvre again.",no:"Almost. The painting returns anyway, because the whole world is waiting.",fact:"حُكم على بيروجيا بالسجن أقل من عام. زعم أنه أعاد اللوحة إلى إيطاليا، لكنه مخطئ: ليوناردو نفسه أخذها إلى فرنسا، لا نابليون.",ru:"في المحكمة يقول بيروجيا إنه فعل ذلك من أجل بلده. تُعرض اللوحة في إيطاليا ثم تُرسل إلى فرنسا. go back = يعود."}];
+const END=["Your chief takes you off the case. Try again.","Case solved, but with mistakes.","Case solved. The chief says: “Good work, but stay sharp.”","Perfect work. You are promoted to Chief Inspector."];
+const REVEAL=`<h2 dir="auto">ما الذي حدث فعلاً</h2>
+<p class="rv" dir="auto">في 21 أغسطس 1911 أخرج فينتشنزو بيروجيا، وهو إيطالي كان يعمل في اللوفر، الموناليزا من المتحف. عُثر على الإطار في الدرج. اللوحة خفيفة، فخرج بها ببساطة.</p>
+<p class="rv" dir="auto">أمضت اللوحة أكثر من عامين في غرفته في باريس. في أواخر 1913 عرضها على تاجر فنون في فلورنسا فاعتُقل. قال إنه أراد إعادة التحفة إلى إيطاليا، لكن المؤرخين يشكّون في أن هذا كان دافعه الوحيد، فقد طلب مالاً مقابل اللوحة.</p>
+<h2 dir="auto">ما الذي لا نعرفه</h2>
+<p class="rv" dir="auto">ظهرت لاحقاً قصة عن محتال طلب نسخاً من اللوحة ليبيعها لجامعي التحف. لم تثبت هذه القصة بشكل موثوق، فتعامل معها كأسطورة.</p>
+<h2 dir="auto">ما الذي اختُلق</h2>
+<p class="rv" dir="auto">الحوارات ودور المحقق بصيغة المتكلم وتفاصيل المشاهد الصغيرة كلها مختلقة من أجل اللعبة. التواريخ والشخصيات الرئيسية مأخوذة من مصادر معروفة، لكنك قرأت ملخصاً وليس وثيقة.</p>
+<h2 dir="auto">أين تتحقق</h2>
+<p class="rv" dir="auto">موقع متحف اللوفر، ومقال «الموناليزا» في الموسوعة البريطانية، ومقالات مجلة سميثسونيان عن السرقة، وكتاب ر. أ. سكوتي “Vanished Smile” (2009).</p>`;
+let i=0,h=3,hints=0,log=[],locked=false;
+const $=id=>document.getElementById(id);
+const gap=(s,f)=>s.g.includes("___")?s.g.replace("___",'<span class="gap">'+(f?s.o[s.c]:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")+"</span>"):s.g;
+function say(t){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace("___","blank"));u.lang="en-US";u.rate=.9;speechSynthesis.speak(u)}
+function start(){i=0;h=3;hints=0;log=[];show()}
+function show(){
+ const s=S[i];locked=false;let hinted=false;
+ $("app").innerHTML=`<div class="bar"><span>Scene ${i+1} of ${S.length}</span><span class="hr">${"♥".repeat(h)+"♡".repeat(3-h)}</span></div>
+ <div class="card"><p class="st">${s.t}</p><p class="pr" id="pr">${gap(s,false)}</p><div class="hint" id="hint" dir="auto"></div></div>
+ <div class="opts" id="o"></div><div class="row"><button id="hb">Hint</button><button id="ls">Listen</button></div><div id="fb"></div>`;
+ [0,1,2].map(k=>[Math.random(),k]).sort((p,q)=>p[0]-q[0]).forEach(([,k])=>{const b=document.createElement("button");b.className="opt";b.textContent=s.o[k];b.onclick=()=>pick(k,b);$("o").appendChild(b)});
+ $("hb").onclick=()=>{if(!hinted){hinted=true;hints++}$("hint").textContent=s.ru};
+ $("ls").onclick=()=>say(s.t+" "+s.g);
+}
+function pick(k,b){
+ if(locked)return;locked=true;const s=S[i],ok=k===s.c;if(!ok)h--;log.push({v:s.o[s.c],ok});
+ [...$("o").children].forEach(x=>{if(x.textContent===s.o[s.c])x.classList.add("good")});if(!ok)b.classList.add("bad");
+ $("pr").innerHTML=gap(s,true);
+ const last=h<=0||i===S.length-1;
+ $("fb").innerHTML=`<div class="fb ${ok?"g":"r"}"><b>${ok?"Correct.":"Not quite."}</b> ${ok?s.ok:s.no}${ok?"":`<br><span class="hint">Correct answer: <b>${s.o[s.c]}</b></span>`}<div class="fact"><b>From the case file</b><div dir="auto">${s.fact}</div></div></div><button class="pri" id="nx">${last?"Finish":"Next"}</button>`;
+ $("nx").onclick=()=>{if(last)end();else{i++;show()}};
+}
+function end(){
+ const won=h>0;
+ $("app").innerHTML=`<div class="card"><p class="rk">${won?"Case closed":"Case lost"}</p><p class="st">${END[h]}</p>
+ <p class="rv">Lives left: ${h} of 3. Hints used: ${hints}.</p><p class="rv"><b>Your verbs:</b></p>
+ ${log.map(x=>`<p class="rv">${x.ok?"✓":"✗"} ${x.v}</p>`).join("")}</div>
+ <div class="card" style="margin-top:12px">${REVEAL}</div><button class="pri" id="rs">Play again</button>`;
+ $("rs").onclick=start;
+}
+start();
+</script></body></html>
