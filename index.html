@@ -25,6 +25,14 @@ h1{font-size:24px;margin:0 0 4px}.s{color:var(--mute);margin:0 0 14px;font-size:
 .bar{display:flex;justify-content:space-between;color:var(--mute);font-size:14px;margin-bottom:8px}
 .gap{display:inline-block;min-width:54px;border-bottom:3px solid var(--acc);color:var(--acc);font-weight:700}
 .q{font-size:20px}
+.card.bg{position:relative;overflow:hidden;color:#fff;background-size:cover;background-position:center;border:none}
+.card.bg::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,28,.4),rgba(10,14,28,.8))}
+.card.bg>*{position:relative}
+.card.bg .v,.card.bg .ipa,.card.bg .ru{text-shadow:0 2px 8px rgba(0,0,0,.75)}
+.card.bg .ipa{color:#ffd8a8}.card.bg .ru{color:#fff}.card.bg .exr,.card.bg .hint{color:#e6e9f2}
+.card.bg .ex{background:rgba(0,0,0,.4);border-radius:10px;padding:8px 10px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.tap{cursor:pointer;border-bottom:1px dotted rgba(255,255,255,.7)}
+.tip{font-size:12px;opacity:.85;margin-top:12px}
 </style></head><body><div class="w">
 <h1>Тренажёр фразовых глаголов</h1>
 <p class="s">127 глаголов из ваших таблиц. Выберите режим.</p>
@@ -50,14 +58,19 @@ function cards(){
  if(!pool.length){$("main").innerHTML='<div class="card"><div class="v">Все 127 выучены 🎉</div><div class="row"><button class="btn" id="rs">Начать заново</button></div></div>';$("rs").onclick=()=>{known.clear();save();next()};return}
  cur=rnd(pool);flip=false;drawCard();
 }
+function slug(v){return clean(v).trim().toLowerCase().replace(/\s+/g,"-")}
+function grad(v){let h=0;for(const c of v)h=(h*31+c.charCodeAt(0))%360;
+ return `radial-gradient(circle at 80% 20%,hsla(${(h+40)%360},90%,70%,.9) 0,transparent 28%),radial-gradient(circle at 15% 85%,hsla(${(h+200)%360},80%,55%,.6) 0,transparent 40%),linear-gradient(135deg,hsl(${h},65%,42%),hsl(${(h+60)%360},70%,26%))`}
 function drawCard(){
  const d=cur;
- $("main").innerHTML=`<div class="card" id="c" style="cursor:pointer">${flip?
- `<div class="ru">${esc(d.ru)}</div><div class="v" style="font-size:22px;margin-top:8px">${esc(d.v)}</div><div class="ipa">${esc(d.ipa)}</div><div class="ex">${esc(d.en)}</div><div class="exr">${esc(d.er)}</div>`:
+ $("main").innerHTML=`<div class="card bg" id="c" style="cursor:pointer;background-image:${grad(d.v)}">${flip?
+ `<div class="ru">${esc(d.ru)}</div><div class="v" style="font-size:22px;margin-top:8px">${esc(d.v)}</div><div><span class="ipa tap" id="ip">${esc(d.ipa)}</span></div><div class="ex tap" id="ex">${esc(d.en)}</div><div class="exr">${esc(d.er)}</div><div class="tip">Нажмите на транскрипцию или предложение, чтобы послушать</div>`:
  `<div class="v">${esc(d.v)}</div><div class="ipa">${esc(d.ipa)}</div><div class="hint">Нажмите, чтобы увидеть перевод</div>`}</div>
  ${flip?'<div class="row"><button class="btn no" id="n">Ещё повторить</button><button class="btn ok" id="k">Знаю</button></div>':''}`;
- $("c").onclick=()=>{if(!flip){flip=true;drawCard()}};
- if(flip){$("n").onclick=cards;$("k").onclick=()=>{known.add(D.indexOf(cur));save();next()}}
+ const im=new Image();im.onload=()=>{const c=$("c");if(c&&cur===d)c.style.backgroundImage=`url("${im.src}")`};im.src="img/"+slug(d.v)+".jpg";
+ $("c").onclick=()=>{if(!flip){flip=true;drawCard();say(clean(cur.v))}};
+ if(flip){$("ip").onclick=e=>{e.stopPropagation();say(clean(d.v))};$("ex").onclick=e=>{e.stopPropagation();say(d.en,.85)};
+  $("n").onclick=cards;$("k").onclick=()=>{known.add(D.indexOf(cur));save();next()}}
 }
 function choice(q,ans,opts,after){
  $("main").innerHTML=`<div class="card">${q}</div><div class="opts" id="o"></div>`;
@@ -79,5 +92,13 @@ function gap(){
  const wrong=shuf(PART.filter(x=>x!==cur.p)).slice(0,3);
  choice(`<div class="q">${s}</div><div class="exr" style="margin-top:8px">${esc(cur.er)}</div><div class="hint">${esc(cur.v.split(" ")[0])} … ? Выберите частицу</div>`,cur.p,[cur.p,...wrong],()=>nextBtn());
 }
+const clean=s=>s.replace(/\s*\(.*\)/,"");
+let VOICE=null;
+function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en[-_]US/i.test(v.lang));
+ const pref=["Samantha","Ava","Allison","Google US English","Aria","Jenny","Zira","Alex"];
+ VOICE=pref.map(n=>vs.find(v=>v.name.includes(n))).find(Boolean)||vs[0]||null}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(t,r){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(t);u.lang="en-US";if(VOICE)u.voice=VOICE;u.rate=r||.9;speechSynthesis.speak(u)}
 next();
 </script></body></html>
