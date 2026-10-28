@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Big Interview: игра на фразовых глаголах</title>
+<script async src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#f6f4ee;--card:#fff;--ink:#1d2433;--mute:#5d667a;--line:#e0dbcd;--acc:#c2410c;--ok:#2b8a3e;--bad:#c92a2a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b202b;--ink:#eceff6;--mute:#9aa3b8;--line:#2d3445;--acc:#ff9a5c;--ok:#6fcf86;--bad:#ff8787;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151d;--card:#1b202b;--ink:#eceff6;--mute:#9aa3b8;--line:#2d3445;--acc:#ff9a5c;--ok:#6fcf86;--bad:#ff8787;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Georgia,"Times New Roman",serif}
+.w{max-width:640px;margin:0 auto;padding:18px 14px 40px}
+h1{font:700 24px/1.2 system-ui,sans-serif;margin:0 0 2px}.sub{font:14px system-ui,sans-serif;color:var(--mute);margin:0 0 14px}
+.bar{display:flex;justify-content:space-between;font:14px system-ui,sans-serif;color:var(--mute);margin-bottom:8px}.hr{color:var(--bad);letter-spacing:2px;font-size:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.st{margin:0 0 12px}.pr{margin:0;font-weight:700;font-size:19px}
+.gap{border-bottom:3px solid var(--acc);color:var(--acc);padding:0 4px}
+.hint{font:14px system-ui,sans-serif;color:var(--mute);margin-top:12px}
+.opts{display:grid;gap:8px;margin-top:12px}
+button{font:600 16px system-ui,sans-serif;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:12px;cursor:pointer;text-align:left}
+.opt.good{background:var(--ok);border-color:var(--ok);color:#fff}.opt.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.row{display:flex;gap:8px;margin-top:10px}.row button{flex:1;font-size:14px;text-align:center}
+.fb{margin-top:12px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+.fb.g{border-color:var(--ok)}.fb.r{border-color:var(--bad)}.fb b{font-family:system-ui,sans-serif}
+.fact{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font:15px/1.5 system-ui,sans-serif;color:var(--mute)}
+.pri{background:var(--acc);border-color:var(--acc);color:#fff;margin-top:10px;width:100%;text-align:center}
+.rv{font:15px/1.5 system-ui,sans-serif;margin:6px 0}.rk{font-size:22px;font-weight:700;margin:6px 0}
+h2{font:700 17px system-ui,sans-serif;margin:16px 0 4px}
+</style></head><body><div class="w">
+<h1>The Big Interview</h1><p class="sub">Игра № 3 · карьера. Пройдите собеседование в большую компанию: выбирайте верные фразовые глаголы.</p>
+<div id="app"></div></div>
+<script>
+const S=[{"t": "Monday, 8:40 am. Your alarm didn’t ring, and your interview at Nova Tech starts at 10:00. You jump out of bed. The office is across the city.", "g": "You shout to yourself: “___! There is no time!”", "o": ["Hurry up", "Hang up", "Back up"], "c": 0, "ok": "You grab your bag and run to the metro. You will arrive on time.", "no": "You waste a few minutes, but you still manage to leave the house.", "fact": "На собеседование стоит приходить за 10-15 минут до начала: успеете перевести дух и не будете нервничать из-за опоздания.", "ru": "Понедельник, 8:40. Будильник не сработал, а собеседование в Nova Tech в 10:00. Вы выпрыгиваете из кровати и говорите себе: «Поторопись! Нет времени!» hurry up = поторопиться."}, {"t": "You arrive at Nova Tech with five minutes to spare. At the reception, a friendly assistant gives you a form and a pen.", "g": "“Please ___ this form with your name and contact details,” she says.", "o": ["fill in", "fall in", "fit in"], "c": 0, "ok": "Name, phone number, email. Easy. She smiles and says the manager will be here soon.", "no": "You hesitate, but the assistant helps you finish the form.", "fact": "Будьте вежливы со всеми сотрудниками, начиная с ресепшена: впечатление о вас часто складывается ещё до разговора с рекрутером.", "ru": "Вы приходите в Nova Tech за пять минут до начала. На ресепшене ассистентка даёт вам анкету: «Пожалуйста, заполните анкету». fill in = заполнить."}, {"t": "In the waiting room, another candidate looks very nervous. Her hands are shaking and she keeps checking her watch.", "g": "You smile and say: “___! It’s only a conversation.”", "o": ["Cheer up", "Pick up", "Give up"], "c": 0, "ok": "She laughs a little and takes a deep breath. You feel calmer too.", "no": "She doesn’t understand you and looks even more worried.", "fact": "Медленное глубокое дыхание помогает снизить волнение перед важным разговором. Попробуйте перед тем, как войти в кабинет.", "ru": "В зале ожидания другая кандидатка сильно нервничает. Вы улыбаетесь: «Выше нос! Это всего лишь разговор». cheer up = взбодриться, не унывать."}, {"t": "The interviewer, Ms. Hart, invites you in. She looks at your resume and asks about your current job.", "g": "“What are you ___ at the moment?” she asks.", "o": ["working on", "working out", "working off"], "c": 0, "ok": "You describe your project clearly. Ms. Hart nods and writes something down.", "no": "You answer a different question. Ms. Hart looks puzzled, but she gives you another chance.", "fact": "Рассказывая о своих проектах, называйте конкретику: что именно вы делали, с кем и какой был результат. Примеры убедительнее общих слов.", "ru": "Рекрутер мисс Харт приглашает вас и спрашивает, над чем вы сейчас работаете. work on = работать над."}, {"t": "Next question: “Tell me about a difficult problem at work.” You remember a project that almost failed because a supplier disappeared.", "g": "“I had to ___ a new plan in two days,” you say.", "o": ["come up with", "come down with", "come over with"], "c": 0, "ok": "Ms. Hart smiles. You explain what you did and what the result was.", "no": "Your sentence sounds strange, but Ms. Hart understands the idea.", "fact": "На такие вопросы часто отвечают по схеме STAR: ситуация, задача, действие, результат. Она помогает говорить чётко и по порядку.", "ru": "Вопрос: расскажите о сложной проблеме. Вы вспоминаете проект, который чуть не сорвался. «Мне пришлось придумать новый план за два дня». come up with = придумать."}, {"t": "Ms. Hart asks how you learn new things. Technology changes fast in this company.", "g": "“I read a lot and take courses to ___ with new tools,” you say.", "o": ["keep up", "keep off", "keep out"], "c": 0, "ok": "She likes your answer. Learning is important at Nova Tech.", "no": "You choose the wrong word, but she understands: you try to stay current.", "fact": "Компании ценят тех, кто учится. Приведите пример: курс, книга или проект, где вы освоили что-то новое.", "ru": "Мисс Харт спрашивает, как вы осваиваете новое. «Я много читаю и прохожу курсы, чтобы не отставать от новых инструментов». keep up with = не отставать от."}, {"t": "Three days later, Nova Tech calls you. They offer you the job! The salary is good, but you also have an interview next week with another company.", "g": "You say: “Thank you! I need a day to ___ the offer.”", "o": ["think over", "think up", "think out"], "c": 0, "ok": "A short pause is normal. The manager says: “Of course, take your time.”", "no": "She is confused for a second, but she understands that you need time.", "fact": "Попросить время обдумать предложение нормально. Но отвечать стоит в течение пары дней и вежливо.", "ru": "Через три дня Nova Tech звонит: вам предлагают работу. Но на следующей неделе у вас ещё одно собеседование. «Мне нужен день, чтобы обдумать предложение». think over = обдумать."}, {"t": "After a day, you decide: Nova Tech is the right place. You call the second company and politely explain that you have another plan.", "g": "You ___ their invitation and thank them for their time.", "o": ["turn down", "turn out", "turn up"], "c": 0, "ok": "They wish you good luck. You close the door politely.", "no": "Your words are confusing, but the message is clear: you decline.", "fact": "Отказываясь от предложения, поблагодарите и сохраните вежливый тон. Профессиональный мир тесен, и репутация важна.", "ru": "Через день вы решаете: Nova Tech ваше место. Вы звоните в другую компанию и вежливо отказываетесь. turn down = отклонить, отказаться."}, {"t": "Five years later, Ms. Hart is your friend and colleague. Your boss is moving to another country. “I believe in you,” he says.", "g": "Next month, you ___ the whole department.", "o": ["take over", "take off", "take in"], "c": 0, "ok": "You become the new Head of Product. The nervous candidate from the waiting room is on your team now.", "no": "Almost. After a few weeks, you become the new Head of Product anyway.", "fact": "Хорошая репутация строится годами: вежливость и честность на собеседовании часто возвращаются позже.", "ru": "Пять лет спустя мисс Харт ваша коллега и подруга. Ваш начальник уезжает в другую страну. В следующем месяце вы возглавляете отдел. take over = принять руководство, взять на себя."}];
+const END=["The interview ends early. Ms. Hart says: “Thank you, we’ll be in touch.” Try again.", "You get the job, but there is a lot to improve.", "You get the job. Ms. Hart says: “Good communication.”", "Perfect interview! Nova Tech welcomes you to the team."];
+const REVEAL=`<h2>Глаголы этой игры</h2>
+<p class="rv">hurry up: поторопиться. fill in: заполнить. cheer up: взбодриться. work on: работать над. come up with: придумать. keep up with: не отставать от. think over: обдумать. turn down: отклонить, отказаться. take over: принять руководство.</p>
+<h2>Что полезно взять на реальное собеседование</h2>
+<p class="rv">Заранее изучите компанию и позицию. Готовьте примеры по схеме STAR. В конце задайте интервьюеру один-два вопроса о работе. После встречи можно коротко поблагодарить письмом.</p>
+<h2>Что выдумано</h2>
+<p class="rv">Компания Nova Tech, мисс Харт и вся история вымышлены для игры. Советы общие: в разных странах и компаниях собеседования проходят по-разному.</p>`;
+let i=0,h=3,hints=0,log=[],locked=false;
+const $=id=>document.getElementById(id);
+const gap=(s,f)=>s.g.includes("___")?s.g.replace("___",'<span class="gap">'+(f?s.o[s.c]:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")+"</span>"):s.g;
+const SS="speechSynthesis" in window,PITCH=.9;let SND=true,TOK=0,VOICE=null;
+function chooseVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
+ const pref=["Google UK English Male","Microsoft Guy","Microsoft Davis","Microsoft Christopher","Microsoft Eric","Alex","Aaron","Evan","Daniel","Fred","Microsoft David","Microsoft Mark","Arthur","Tom"];
+ VOICE=null;for(const n of pref){const v=vs.find(x=>x.name.includes(n));if(v){VOICE=v;break}}
+ VOICE=VOICE||vs.find(v=>/^en[-_]US/i.test(v.lang))||vs[0]||null}
+if(SS){chooseVoice();speechSynthesis.onvoiceschanged=chooseVoice}
+function speak(seq){if(!SS||!SND)return;speechSynthesis.cancel();const tk=++TOK;let k=0;
+ const go=()=>{if(tk!==TOK||k>=seq.length)return;const p=seq[k++];
+  setTimeout(()=>{if(tk!==TOK)return;const u=new SpeechSynthesisUtterance(p.t);u.lang="en-US";if(VOICE)u.voice=VOICE;u.rate=p.r;u.pitch=p.p||PITCH;u.volume=1;u.onend=go;u.onerror=go;speechSynthesis.speak(u)},p.d||0)};go()}
+function seqFor(s){const o=[],cl=x=>x.replace(/[“”"]/g,"").trim();
+ (s.t.match(/[^.!?]+[.!?]*”?\s*/g)||[s.t]).forEach(x=>{const q=x.trim().startsWith("“"),e=x.includes("!"),w=x.includes("?");
+  o.push({t:x,r:e?.84:.78,p:PITCH+(q?.1:0)+(e?.1:0)+(w?.12:0),d:300})});
+ if(s.g.includes("___")){const [a,b]=s.g.split("___");if(/\w/.test(cl(a)))o.push({t:cl(a),r:.78,p:PITCH+.05,d:600});if(/\w/.test(cl(b)))o.push({t:cl(b),r:.78,p:PITCH+.05,d:900})}
+ else o.push({t:s.g,r:.78,p:PITCH+.12,d:600});
+ return o}
+const vp=s=>s.sp||s.o[s.c].toLowerCase();
+function buzz(){try{const H=window.Telegram&&Telegram.WebApp&&Telegram.WebApp.HapticFeedback;if(H){H.notificationOccurred("success");return}}catch(e){}
+ try{navigator.vibrate&&navigator.vibrate([40,40,70])}catch(e){}}
+window.addEventListener("load",()=>{try{Telegram.WebApp.ready();Telegram.WebApp.expand()}catch(e){}});
+function start(){i=0;h=3;hints=0;log=[];show()}
+function show(){
+ const s=S[i];locked=false;let hinted=false;
+ $("app").innerHTML=`<div class="bar"><span>Scene ${i+1} of ${S.length}</span><span class="hr">${"♥".repeat(h)+"♡".repeat(3-h)}</span></div>
+ <div class="card"><p class="st">${s.t}</p><p class="pr" id="pr">${gap(s,false)}</p><div class="hint" id="hint"></div></div>
+ <div class="opts" id="o"></div><div class="row"><button id="hb">Подсказка</button><button id="ls">Слушать</button></div><div id="fb"></div>`;
+ [0,1,2].map(k=>[Math.random(),k]).sort((p,q)=>p[0]-q[0]).forEach(([,k])=>{const b=document.createElement("button");b.className="opt";b.textContent=s.o[k];b.onclick=()=>pick(k,b);$("o").appendChild(b)});
+ $("hb").onclick=()=>{if(!hinted){hinted=true;hints++}$("hint").textContent=s.ru};
+ $("ls").onclick=()=>speak(seqFor(s));
+}
+function pick(k,b){
+ const s=S[i];if(locked){if(k===s.c)speak([{t:vp(s),r:.7}]);return}locked=true;const ok=k===s.c;if(!ok)h--;log.push({v:s.o[s.c],ok});
+ [...$("o").children].forEach(x=>{if(x.textContent===s.o[s.c])x.classList.add("good")});if(!ok)b.classList.add("bad");
+ $("pr").innerHTML=gap(s,true);
+ speak([{t:vp(s),r:.7}]);if(ok)buzz();
+ const last=h<=0||i===S.length-1;
+ $("fb").innerHTML=`<div class="fb ${ok?"g":"r"}"><b>${ok?"Correct.":"Not quite."}</b> ${ok?s.ok:s.no}${ok?"":`<br><span class="hint">Правильный ответ: <b>${s.o[s.c]}</b></span>`}<div class="fact"><b>Совет для собеседования:</b> ${s.fact}</div></div><button class="pri" id="nx">${last?"Финал":"Дальше"}</button>`;
+ $("nx").onclick=()=>{if(last)end();else{i++;show()}};
+}
+function end(){
+ const won=h>0;
+ $("app").innerHTML=`<div class="card"><p class="rk">${won?"You got the job!":"Not this time"}</p><p class="st">${END[h]}</p>
+ <p class="rv">Жизней осталось: ${h} из 3. Подсказок использовано: ${hints}.</p><p class="rv"><b>Ваши глаголы:</b></p>
+ ${log.map(x=>`<p class="rv">${x.ok?"✓":"✗"} ${x.v}</p>`).join("")}</div>
+ <div class="card" style="margin-top:12px">${REVEAL}</div><button class="pri" id="rs">Играть заново</button>`;
+ $("rs").onclick=start;
+}
+start();
+</script></body></html>
