@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Man Who Sold the Eiffel Tower: детектив на фразовых глаголах</title>
+<script async src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#f6f4ee;--card:#fff;--ink:#1d2433;--mute:#5d667a;--line:#e0dbcd;--acc:#c2410c;--ok:#2b8a3e;--bad:#c92a2a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b202b;--ink:#eceff6;--mute:#9aa3b8;--line:#2d3445;--acc:#ff9a5c;--ok:#6fcf86;--bad:#ff8787;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151d;--card:#1b202b;--ink:#eceff6;--mute:#9aa3b8;--line:#2d3445;--acc:#ff9a5c;--ok:#6fcf86;--bad:#ff8787;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Georgia,"Times New Roman",serif}
+.w{max-width:640px;margin:0 auto;padding:18px 14px 40px}
+h1{font:700 24px/1.2 system-ui,sans-serif;margin:0 0 2px}.sub{font:14px system-ui,sans-serif;color:var(--mute);margin:0 0 14px}
+.bar{display:flex;justify-content:space-between;font:14px system-ui,sans-serif;color:var(--mute);margin-bottom:8px}.hr{color:var(--bad);letter-spacing:2px;font-size:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.st{margin:0 0 12px}.pr{margin:0;font-weight:700;font-size:19px}
+.gap{border-bottom:3px solid var(--acc);color:var(--acc);padding:0 4px}
+.hint{font:14px system-ui,sans-serif;color:var(--mute);margin-top:12px}
+.opts{display:grid;gap:8px;margin-top:12px}
+button{font:600 16px system-ui,sans-serif;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:12px;cursor:pointer;text-align:left}
+.opt.good{background:var(--ok);border-color:var(--ok);color:#fff}.opt.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.row{display:flex;gap:8px;margin-top:10px}.row button{flex:1;font-size:14px;text-align:center}
+.fb{margin-top:12px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+.fb.g{border-color:var(--ok)}.fb.r{border-color:var(--bad)}.fb b{font-family:system-ui,sans-serif}
+.fact{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font:15px/1.5 system-ui,sans-serif;color:var(--mute)}
+.pri{background:var(--acc);border-color:var(--acc);color:#fff;margin-top:10px;width:100%;text-align:center}
+.rv{font:15px/1.5 system-ui,sans-serif;margin:6px 0}.rk{font-size:22px;font-weight:700;margin:6px 0}
+h2{font:700 17px system-ui,sans-serif;margin:16px 0 4px}
+</style></head><body><div class="w">
+<h1>The Man Who Sold the Eiffel Tower</h1><p class="sub">Дело № 2 · реальная история 1925 года. Выбирайте фразовые глаголы и раскройте аферу.</p>
+<div id="app"></div></div>
+<script>
+const S=[{"t": "Paris, autumn 1925. A scrap-metal dealer storms into the police station. “A government official wants to sell the Eiffel Tower!” he says. “He invited me to the Hôtel de Crillon. Something feels wrong.” You take the case.", "g": "You ask him to ___ everything that happened at the hotel.", "o": ["go over", "go off", "go out"], "c": 0, "ok": "He remembers every detail: the letter, the suite, the polite voice.", "no": "You interrupt him too early and miss some important details.", "fact": "Эйфелеву башню построили к Всемирной выставке 1889 года, и сначала разрешение на неё выдали примерно на 20 лет. Поэтому история про «снос» звучала правдоподобно.", "ru": "Осень 1925 года, Париж. Торговец металлоломом врывается в полицию: «Чиновник хочет продать Эйфелеву башню! Он пригласил меня в отель «Крийон». Что-то не так». Вы просите его пересказать всё, что случилось в отеле. go over = пройтись по пунктам, пересмотреть."}, {"t": "The dealer shows you his invitation. It has an official stamp from the Ministry of Posts and Telegraphs, but the letter looks almost too perfect.", "g": "You call the ministry to ___ if they really sent it.", "o": ["find out", "run out", "pass out"], "c": 0, "ok": "The ministry has never heard of any meeting. The letter is a forgery.", "no": "You call the wrong office and waste a day, but in the end the answer is the same: it is a forgery.", "fact": "Люстиг использовал поддельные официальные бланки. Министерство почт и телеграфов звучало правдоподобно: башня тогда использовалась для радиосвязи.", "ru": "Торговец показывает приглашение с печатью Министерства почт и телеграфов, но письмо выглядит слишком идеальным. Вы звоните в министерство, чтобы выяснить, отправляли ли они его. find out = выяснить."}, {"t": "The dealer remembers the meeting. Six men sat in a luxury suite. A calm man in an elegant suit said that he was the deputy director-general of the ministry. The Eiffel Tower is old and too expensive, he said, so the government will secretly sell it as scrap metal.", "g": "“He told us not to ___ the secret to the newspapers,” the dealer says.", "o": ["give away", "give in", "give back"], "c": 0, "ok": "The secret made the story sound real. If the public knew, all of Paris would protest.", "no": "The word is wrong, but the meaning is clear: the plan was strictly secret.", "fact": "Вес металлической конструкции башни называют по-разному: от 7000 до 7300 тонн. Именно столько «металлолома» обещал мошенник.", "ru": "Торговец вспоминает встречу. Шестеро в роскошном номере, спокойный «заместитель генерального директора» объясняет: башня стара и дорога, правительство тайно продаст её на металлолом. «Не выдавайте секрет газетам». give away = выдать, разболтать."}, {"t": "The man also took the dealers to see the tower from a rented car. He pointed at the iron and spoke about costs, repairs and the old contract. Then he asked everyone to send a private offer.", "g": "He wanted the dealers to ___ the tower carefully, like real buyers.", "o": ["look over", "look up", "look out"], "c": 0, "ok": "That made the plan feel real: serious men inspecting a serious object.", "no": "The meaning gets lost, but the idea is simple: they were inspecting the tower.", "fact": "По рассказам, Люстиг возил торговцев смотреть на башню. Точные подробности в источниках расходятся, так что это скорее известная история, чем проверенный документ.", "ru": "Мужчина возил торговцев смотреть на башню на арендованной машине и просил каждого прислать личное предложение. Он хотел, чтобы они внимательно осмотрели башню, как настоящие покупатели. look over = осмотреть."}, {"t": "The dealer says he almost sent an offer. “At first I believed him,” he says. “He was so polite and so confident.”", "g": "“Then I started to ___ that something was wrong.”", "o": ["figure out", "fall apart", "show up"], "c": 0, "ok": "A little doubt was enough. He decided to go to the police.", "no": "It was a small doubt, but it was enough. He decided to go to the police.", "fact": "Люстигу приписывают «заповеди мошенника»: среди них совет внимательно слушать собеседника и никогда не выглядеть скучающим.", "ru": "Торговец говорит, что сначала поверил: мужчина был вежлив и уверен. «Потом я начал понимать, что что-то не так». figure out = понять, догадаться."}, {"t": "You think: if the trick worked once, it may have worked before. A colleague tells you a rumour about another businessman, André Poisson, who may have paid a huge sum in the spring but never filed a complaint.", "g": "You ___ Poisson, but he refuses to talk about it.", "o": ["track down", "turn down", "back down"], "c": 0, "ok": "He is nervous and embarrassed, but he is the key witness.", "no": "It takes extra time, but you finally find him. He is nervous and embarrassed.", "fact": "По рассказам, Андре Пуассон был новичком в парижском деловом мире и очень хотел получить влиятельные связи. Мошенник сыграл на этом.", "ru": "Вы думаете: если обман сработал, он мог сработать и раньше. Коллега рассказывает слух о другом бизнесмене, Андре Пуассоне, который, возможно, заплатил огромную сумму ещё весной, но не подавал жалобу. Вы разыскиваете Пуассона. track down = разыскать."}, {"t": "Poisson finally admits the truth, very quietly. He paid a large sum for the right to take the tower apart. He even gave the official a bribe to win the “tender”. After that, the man disappeared.", "g": "“I was afraid people would ___ me,” he says.", "o": ["laugh at", "stand up for", "count on"], "c": 0, "ok": "A businessman who bribes an official to buy a monument is easy to laugh at. He knew it.", "no": "Poisson sighs. He means that he was ashamed. That is why he never went to the police.", "fact": "Пуассон не только заплатил за «право на демонтаж», но и дал мошеннику взятку. Из-за стыда он не пошёл в полицию, а Люстиг уехал в Вену с деньгами.", "ru": "Пуассон признаётся: он заплатил за право разобрать башню и даже дал взятку, чтобы выиграть «тендер». Потом мужчина исчез. «Я боялся, что надо мной будут смеяться». laugh at = смеяться над."}, {"t": "Your colleagues recognise the method. It sounds like Victor Lustig, a swindler who uses many names. You hurry to the hotel, but Lustig is a step ahead.", "g": "He has already ___.", "o": ["taken off", "taken over", "taken in"], "c": 0, "sp": "take off", "ok": "The suite is empty. Only a crumpled newspaper is left on the table.", "no": "The word is wrong, but the truth is simple: the suite is empty and he is gone.", "fact": "Через несколько месяцев после первой аферы Люстиг вернулся в Париж и повторил схему с другой группой торговцев. Один из них заподозрил обман и пошёл в полицию, но Люстиг успел скрыться.", "ru": "Коллеги узнают почерк: это Виктор Люстиг, мошенник со множеством имён. Вы спешите в отель, но он на шаг впереди и уже уехал. take off = быстро уехать, удрать."}, {"t": "Lustig sails to America and becomes one of the most famous con men. In 1935 the police arrest him for forging banknotes, and he is sent to Alcatraz.", "g": "In the end, even the cleverest swindler can’t ___ forever.", "o": ["get away with it", "get along with it", "get over it"], "c": 0, "ok": "Lustig was caught. The man who sold the Eiffel Tower did not escape forever.", "no": "Almost. The clever swindler was finally caught.", "fact": "Люстиг уехал в США. В 1935 году его арестовали за подделку банкнот, он попал в Алькатрас и умер в 1947 году в тюремной больнице.", "ru": "Люстиг уезжает в Америку и становится одним из самых известных мошенников. В 1935 году его арестовывают за подделку банкнот и отправляют в Алькатрас. Даже самый хитрый мошенник не может вечно уходить от наказания. get away with it = выйти сухим из воды."}];
+const END=["Your chief takes you off the case. Try again.","Case solved, but with mistakes.","Case solved. The chief says: “Good work, but stay sharp.”","Perfect work. You are promoted to Chief Inspector."];
+const REVEAL=`<h2>Что было на самом деле</h2>
+<p class="rv">Весной 1925 года Виктор Люстиг прочитал в газете, что Эйфелева башня стареет и её содержание обходится дорого. Он подделал официальные бумаги, назвался заместителем генерального директора Министерства почт и телеграфов и пригласил нескольких торговцев металлоломом в отель «Крийон» на «секретный тендер» по продаже башни на металл.</p>
+<p class="rv">Жертвой стал Андре Пуассон: он заплатил крупную сумму и дал Люстигу взятку, чтобы выиграть «тендер». Люстиг уехал в Вену с деньгами. Пуассон постеснялся обратиться в полицию. Через несколько месяцев Люстиг вернулся в Париж и повторил схему, но на этот раз один из покупателей заподозрил обман и пошёл в полицию. Люстиг скрылся и уехал в США, где позже его арестовали за подделку денег.</p>
+<h2>Что неизвестно</h2>
+<p class="rv">Точные суммы, даты и детали встреч в разных источниках отличаются. Многие подробности известны по пересказам, а не по документам. Известную историю о том, как Люстиг «одолжил» деньги у Аль Капоне, тоже стоит считать красивой легендой.</p>
+<h2>Что выдумано</h2>
+<p class="rv">Роль детектива, диалоги и допросы придуманы для игры. Не подтверждено, что полиция разыскала Пуассона и допросила его до бегства Люстига: по известной версии, он в полицию не обращался. Пустой номер и газета в сцене 8 тоже вымышлены.</p>
+<h2>Где проверить</h2>
+<p class="rv">Британская энциклопедия (статья о Victor Lustig), материалы Smithsonian Magazine и другие энциклопедические источники о Викторе Люстиге.</p>`;
+let i=0,h=3,hints=0,log=[],locked=false;
+const $=id=>document.getElementById(id);
+const gap=(s,f)=>s.g.includes("___")?s.g.replace("___",'<span class="gap">'+(f?s.o[s.c]:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")+"</span>"):s.g;
+const SS="speechSynthesis" in window,PITCH=.9;let SND=true,TOK=0,VOICE=null;
+function chooseVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
+ const pref=["Google UK English Male","Microsoft Guy","Microsoft Davis","Microsoft Christopher","Microsoft Eric","Alex","Aaron","Evan","Daniel","Fred","Microsoft David","Microsoft Mark","Arthur","Tom"];
+ VOICE=null;for(const n of pref){const v=vs.find(x=>x.name.includes(n));if(v){VOICE=v;break}}
+ VOICE=VOICE||vs.find(v=>/^en[-_]US/i.test(v.lang))||vs[0]||null}
+if(SS){chooseVoice();speechSynthesis.onvoiceschanged=chooseVoice}
+function speak(seq){if(!SS||!SND)return;speechSynthesis.cancel();const tk=++TOK;let k=0;
+ const go=()=>{if(tk!==TOK||k>=seq.length)return;const p=seq[k++];
+  setTimeout(()=>{if(tk!==TOK)return;const u=new SpeechSynthesisUtterance(p.t);u.lang="en-US";if(VOICE)u.voice=VOICE;u.rate=p.r;u.pitch=p.p||PITCH;u.volume=1;u.onend=go;u.onerror=go;speechSynthesis.speak(u)},p.d||0)};go()}
+function seqFor(s){const o=[],cl=x=>x.replace(/[“”"]/g,"").trim();
+ (s.t.match(/[^.!?]+[.!?]*”?\s*/g)||[s.t]).forEach(x=>{const q=x.trim().startsWith("“"),e=x.includes("!"),w=x.includes("?");
+  o.push({t:x,r:e?.84:.78,p:PITCH+(q?.1:0)+(e?.1:0)+(w?.12:0),d:300})});
+ if(s.g.includes("___")){const [a,b]=s.g.split("___");if(/\w/.test(cl(a)))o.push({t:cl(a),r:.78,p:PITCH+.05,d:600});if(/\w/.test(cl(b)))o.push({t:cl(b),r:.78,p:PITCH+.05,d:900})}
+ else o.push({t:s.g,r:.78,p:PITCH+.12,d:600});
+ return o}
+const vp=s=>s.sp||s.o[s.c].toLowerCase();
+function buzz(){try{const H=window.Telegram&&Telegram.WebApp&&Telegram.WebApp.HapticFeedback;if(H){H.notificationOccurred("success");return}}catch(e){}
+ try{navigator.vibrate&&navigator.vibrate([40,40,70])}catch(e){}}
+window.addEventListener("load",()=>{try{Telegram.WebApp.ready();Telegram.WebApp.expand()}catch(e){}});
+function start(){i=0;h=3;hints=0;log=[];show()}
+function show(){
+ const s=S[i];locked=false;let hinted=false;
+ $("app").innerHTML=`<div class="bar"><span>Scene ${i+1} of ${S.length}</span><span class="hr">${"♥".repeat(h)+"♡".repeat(3-h)}</span></div>
+ <div class="card"><p class="st">${s.t}</p><p class="pr" id="pr">${gap(s,false)}</p><div class="hint" id="hint"></div></div>
+ <div class="opts" id="o"></div><div class="row"><button id="hb">Подсказка</button><button id="ls">Слушать</button></div><div id="fb"></div>`;
+ [0,1,2].map(k=>[Math.random(),k]).sort((p,q)=>p[0]-q[0]).forEach(([,k])=>{const b=document.createElement("button");b.className="opt";b.textContent=s.o[k];b.onclick=()=>pick(k,b);$("o").appendChild(b)});
+ $("hb").onclick=()=>{if(!hinted){hinted=true;hints++}$("hint").textContent=s.ru};
+ $("ls").onclick=()=>speak(seqFor(s));
+}
+function pick(k,b){
+ const s=S[i];if(locked){if(k===s.c)speak([{t:vp(s),r:.7}]);return}locked=true;const ok=k===s.c;if(!ok)h--;log.push({v:s.o[s.c],ok});
+ [...$("o").children].forEach(x=>{if(x.textContent===s.o[s.c])x.classList.add("good")});if(!ok)b.classList.add("bad");
+ $("pr").innerHTML=gap(s,true);
+ speak([{t:vp(s),r:.7}]);if(ok)buzz();
+ const last=h<=0||i===S.length-1;
+ $("fb").innerHTML=`<div class="fb ${ok?"g":"r"}"><b>${ok?"Correct.":"Not quite."}</b> ${ok?s.ok:s.no}${ok?"":`<br><span class="hint">Правильный ответ: <b>${s.o[s.c]}</b></span>`}<div class="fact"><b>Из дела:</b> ${s.fact}</div></div><button class="pri" id="nx">${last?"Финал":"Дальше"}</button>`;
+ $("nx").onclick=()=>{if(last)end();else{i++;show()}};
+}
+function end(){
+ const won=h>0;
+ $("app").innerHTML=`<div class="card"><p class="rk">${won?"Case closed":"Case lost"}</p><p class="st">${END[h]}</p>
+ <p class="rv">Жизней осталось: ${h} из 3. Подсказок использовано: ${hints}.</p><p class="rv"><b>Ваши глаголы:</b></p>
+ ${log.map(x=>`<p class="rv">${x.ok?"✓":"✗"} ${x.v}</p>`).join("")}</div>
+ <div class="card" style="margin-top:12px">${REVEAL}</div><button class="pri" id="rs">Играть заново</button>`;
+ $("rs").onclick=start;
+}
+start();
+</script></body></html>
