@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WordCraft · В чём разница?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF8F4;--ink:#1D1D1F;--sub:#6E6E73;--card:#fff;--line:#E8E4DC;--dot:#CECAC2;--sh:rgba(70,55,30,.16);--danger:#CD3E3A;--a0:#3478F6;--a1:#F47050;--a2:#2E966E;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111113;--ink:#F5F5F7;--sub:#98989F;--card:#1E1E21;--line:#303035;--dot:#46464C;--sh:rgba(0,0,0,.6);--danger:#FF766C}}
+:root[data-theme="dark"]{--bg:#111113;--ink:#F5F5F7;--sub:#98989F;--card:#1E1E21;--line:#303035;--dot:#46464C;--sh:rgba(0,0,0,.6);--danger:#FF766C}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"SF Pro Display","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100svh}
+.app{max-width:480px;margin:0 auto;padding:18px 16px 28px}
+.top{display:flex;align-items:center;justify-content:space-between;margin:4px 6px 16px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--a0);transition:background .4s}
+.seg{display:inline-flex;background:var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:var(--sub);font:600 13px Inter,sans-serif;padding:6px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px var(--sh)}
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 2px 26px;margin:0 -2px}
+.rail::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;position:relative;overflow:hidden;background:var(--card);border-radius:30px;padding:28px 24px;min-height:min(640px,calc(100svh - 210px));display:flex;flex-direction:column;box-shadow:0 1px 0 var(--line),0 22px 40px -22px var(--sh)}
+.cover{background:radial-gradient(circle at 100% 0,color-mix(in srgb,var(--a0) 34%,transparent),transparent 58%),radial-gradient(circle at 0 100%,color-mix(in srgb,var(--a1) 30%,transparent),transparent 58%),var(--card);justify-content:space-between}
+.row{display:flex;justify-content:space-between;align-items:center;color:var(--sub);font-size:14px}
+.lbl{color:var(--sub);font-size:19px;margin-bottom:10px}
+.big{font-weight:700;letter-spacing:-.035em;line-height:1.02;font-size:clamp(58px,19vw,96px)}
+.n3 .big{font-size:clamp(46px,14vw,70px)}
+.vs{font-style:italic;color:var(--sub);font-size:20px;margin:6px 0 4px 4px}
+.hook{font-weight:600;font-size:23px;line-height:1.25}
+.hint{color:var(--sub);font-size:14px;margin-top:6px}
+.tp{border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer;letter-spacing:inherit;-webkit-tap-highlight-color:transparent;transition:opacity .2s,transform .15s}
+.tp:active{transform:scale(.98)}
+.tp.on{opacity:.5}
+.tp:focus-visible{outline:3px solid color-mix(in srgb,var(--a0) 50%,transparent);outline-offset:3px;border-radius:8px}
+.ic::after{content:"";display:inline-block;width:.78em;height:.78em;margin-left:.4em;vertical-align:-.05em;opacity:.45;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5 6 9H2v6h4l5 4z'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5 6 9H2v6h4l5 4z'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14'/%3E%3C/svg%3E") center/contain no-repeat}
+.big.ic::after{display:none}
+h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0 0 18px}
+.wc{border:1px solid var(--line);border-radius:20px;padding:16px 18px;margin-bottom:12px;background:var(--card)}
+.wh{display:flex;justify-content:space-between;align-items:baseline}
+.wd{font-size:34px;font-weight:700;letter-spacing:-.025em}
+.ipa{color:var(--sub);font-size:14px}
+.ru{font-weight:600;font-size:18px;margin-top:4px}
+.note{color:var(--sub);font-size:15px;margin-top:2px}
+.wc hr{border:0;border-top:1px solid var(--line);margin:12px 0}
+.ex{font-style:italic;font-size:17px;line-height:1.35}
+.exr{color:var(--sub);font-size:14px;margin-top:2px}
+.rem{justify-content:center;gap:26px}
+.pill{align-self:flex-start;background:var(--a0);color:#fff;font-weight:600;font-size:14px;padding:8px 16px;border-radius:999px}
+.rule{font-size:clamp(24px,7vw,30px);font-weight:700;line-height:1.28;letter-spacing:-.02em}
+.rule .tp{font-weight:700}
+.mis{border-radius:20px;padding:16px 18px;background:color-mix(in srgb,var(--danger) 9%,var(--card))}
+.mis b{display:block;color:var(--danger);font-size:14px;font-weight:600;margin-bottom:4px}
+.mis span{font-size:18px;line-height:1.4}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:-10px}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:var(--dot);cursor:pointer;transition:all .3s}
+.dots button[aria-current="true"]{width:26px;background:var(--a0)}
+.nav{display:flex;align-items:center;justify-content:space-between;margin:26px 6px 0;color:var(--sub);font-size:14px}
+.nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;box-shadow:0 1px 2px var(--sh)}
+.nav button:disabled{opacity:.35;cursor:default}
+.nav b{color:var(--ink);font-weight:600}
+#msg{text-align:center;color:var(--danger);font-size:13px;min-height:18px;margin-top:12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand"><i></i>WordCraft</div>
+    <div class="seg" role="group" aria-label="Произношение"><button data-a="en-US">US</button><button data-a="en-GB">UK</button></div>
+  </div>
+  <div class="rail" id="rail" aria-live="polite"></div>
+  <div class="dots" id="dots"></div>
+  <div class="nav"><button id="prev" aria-label="Предыдущий день">‹</button><span id="day"></span><button id="next" aria-label="Следующий день">›</button></div>
+  <div id="msg"></div>
+</div>
+<script>
+// [заголовок, вопрос, [[слово, транскрипция, перевод, пояснение, пример, перевод примера]], правило, ошибка]
+var D=[
+["Clear vs. Clean","Прозрачный или чистый?",[["Clear","/klɪər/","ясный, прозрачный, свободный","ничто не мешает видеть или пройти","The road is clear, you can go.","Дорога свободна, можно ехать."],["Clean","/kliːn/","чистый, без грязи","нет пятен и грязи","Please clean your room.","Пожалуйста, убери свою комнату."]],"Clear — про ясность и свободное место. Clean — про отсутствие грязи.","“Clear hands” про чистые руки — нет. Правильно: clean hands."],
+["Look vs. Watch vs. See","Три способа смотреть",[["Look","/lʊk/","посмотреть, направить взгляд","","Look at this beautiful photo!","Посмотри на эту красивую фотографию!"],["Watch","/wɒtʃ/","наблюдать за движением","","We watch a movie every Friday.","Мы смотрим фильм каждую пятницу."],["See","/siː/","видеть, замечать","","I can see the mountains from here.","Отсюда я вижу горы."]],"Look — направить взгляд. Watch — следить за тем, что движется. See — просто видеть.","“Look the film” — нет. Фильмы смотрят глаголом watch."],
+["Say vs. Tell","Что сказал или кому сказал?",[["Say","/seɪ/","сказать","важно, ЧТО сказали","She said she was tired.","Она сказала, что устала."],["Tell","/tel/","сказать кому-то, рассказать","важно, КОМУ сказали","She told me she was tired.","Она сказала мне, что устала."]],"Say — что сказали. Tell — кому сказали: после tell сразу идёт человек.","“She said me” — нет. Правильно: She told me или She said to me."],
+["Hear vs. Listen","Услышать или послушать?",[["Hear","/hɪər/","слышать","звук просто доходит до вас","I can hear birds outside.","Я слышу птиц за окном."],["Listen","/ˈlɪsn/","слушать","вы внимательно вслушиваетесь","Listen to this song!","Послушай эту песню!"]],"Hear — звук пришёл сам. Listen — вы направили внимание. Listen всегда с to.","“Listen the music” — нет. Правильно: listen to the music."],
+["Borrow vs. Lend","Взять или дать на время?",[["Borrow","/ˈbɒrəʊ/","взять взаймы","вы берёте на время","Can I borrow your pen?","Можно одолжить твою ручку?"],["Lend","/lend/","одолжить, дать взаймы","вы даёте на время","Can you lend me your pen?","Ты можешь одолжить мне ручку?"]],"Borrow — берёте вы. Lend — даёте вы.","“Can you borrow me your pen?” — нет. Тот, кто даёт, делает lend."],
+["Make vs. Do","Создать или выполнить?",[["Make","/meɪk/","делать, создавать","появляется что-то новое","I make coffee every morning.","Я делаю кофе каждое утро."],["Do","/duː/","делать, выполнять","занятия, работа, задачи","I do my homework in the evening.","Я делаю уроки вечером."]],"Make — на выходе новая вещь. Do — занятие или задача.","“Make homework” — нет. Правильно: do homework."]
+];
+var P=[["#3478F6","#F47050","#2E966E"],["#2E966E","#E25470","#CE7E0E"],["#825CF0","#1EA8C4","#FF8A3C"],["#E05252","#2E8CC8","#3CAA6E"]];
+var NUM={2:"Два",3:"Три"},acc="en-US",off=0,n=D.length;
+try{acc=localStorage.getItem("wc-acc")||acc}catch(e){}
+var DAY=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5);
+var $=function(s){return document.querySelector(s)};
+var sy=window.speechSynthesis,voices=[];
+if(sy){voices=sy.getVoices();sy.onvoiceschanged=function(){voices=sy.getVoices()}}
+
+function say(t,el){
+  if(!sy){$("#msg").textContent="Озвучка не поддерживается в этом браузере. Откройте страницу в Safari или Chrome.";return}
+  sy.cancel();
+  var u=new SpeechSynthesisUtterance(t);u.lang=acc;u.rate=.92;
+  var v=voices.find(function(x){return x.lang.replace("_","-")===acc});if(v)u.voice=v;
+  if(el)el.classList.add("on");
+  u.onend=u.onerror=function(){if(el)el.classList.remove("on")};
+  sy.speak(u);
+}
+function tp(t,cls,inner){return '<button class="tp '+(cls||"")+'" data-t="'+t+'">'+(inner||t)+'</button>'}
+function hl(text,ws){
+  var re=new RegExp("\\b("+ws.join("|")+")\\b","gi");
+  return text.replace(re,function(m){var i=ws.findIndex(function(w){return w.toLowerCase()===m.toLowerCase()});return '<button class="tp" data-t="'+m+'" style="color:var(--a'+i+')">'+m+'</button>'});
+}
+function render(){
+  var i=((DAY-off)%n+n)%n,e=D[i],pal=P[i%P.length],w=e[2],k=w.length;
+  pal.forEach(function(c,j){document.documentElement.style.setProperty("--a"+j,c)});
+  var date=new Date(Date.now()-off*864e5).toLocaleDateString("ru-RU",{day:"numeric",month:"long"});
+  var words=w.map(function(x){return x[0]});
+  var cover='<section class="slide cover n'+k+'"><div class="row"><span>'+date+'</span></div><div>'
+    +'<div class="lbl">В чём разница?</div>'
+    +w.map(function(x,j){return (j?'<div class="vs">vs</div>':'')+tp(x[0],"big",'<span class="big" style="color:var(--a'+j+')">'+x[0]+'</span>')}).join("")
+    +'</div><div><div class="hook">'+e[1]+'</div><div class="hint">Нажмите на слово — услышите, как оно звучит</div></div></section>';
+  var mean='<section class="slide"><h2>'+NUM[k]+' слова — '+NUM[k].toLowerCase()+' смысла</h2>'
+    +w.map(function(x,j){return '<div class="wc"><div class="wh">'+tp(x[0],"ic wd",'<span style="color:var(--a'+j+')">'+x[0]+'</span>')+'<span class="ipa">'+x[1]+'</span></div>'
+      +'<div class="ru">'+x[2]+'</div>'+(k===2&&x[3]?'<div class="note">'+x[3]+'</div>':'')+'<hr>'
+      +tp(x[4],"ic ex","“"+x[4]+"”")+'<div class="exr">'+x[5]+'</div></div>'}).join("")+'</section>';
+  var rem='<section class="slide rem"><span class="pill">Запомните</span><div class="rule">'+hl(e[3],words)+'</div><div class="mis"><b>Частая ошибка</b><span>'+e[4]+'</span></div></section>';
+  var rail=$("#rail");rail.innerHTML=cover+mean+rem;rail.scrollTo({left:0});
+  $("#dots").innerHTML=[0,1,2].map(function(j){return '<button aria-label="Слайд '+(j+1)+'" data-s="'+j+'"'+(j===0?' aria-current="true"':'')+'></button>'}).join("");
+  $("#day").innerHTML="<b>"+(off===0?"Сегодня":off===1?"Вчера":off+" дн. назад")+"</b> · "+(i+1)+" из "+n;
+  $("#prev").disabled=off>=n-1;$("#next").disabled=off<=0;
+}
+document.addEventListener("click",function(ev){
+  var t=ev.target.closest("[data-t]");if(t){say(t.dataset.t,t);return}
+  var s=ev.target.closest("[data-s]");if(s){var r=$("#rail");r.scrollTo({left:r.clientWidth*(+s.dataset.s)+(+s.dataset.s)*12,behavior:"smooth"})}
+  var a=ev.target.closest("[data-a]");if(a){acc=a.dataset.a;try{localStorage.setItem("wc-acc",acc)}catch(e){}mark()}
+});
+$("#prev").onclick=function(){off++;render()};
+$("#next").onclick=function(){off--;render()};
+$("#rail").addEventListener("scroll",function(){
+  var r=this,j=Math.round(r.scrollLeft/(r.clientWidth+12));
+  document.querySelectorAll("#dots button").forEach(function(b,x){b.toggleAttribute("aria-current",x===j);if(x===j)b.setAttribute("aria-current","true")});
+},{passive:true});
+function mark(){document.querySelectorAll(".seg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.a===acc)})}
+mark();render();
+</script>
+</body>
+</html>
